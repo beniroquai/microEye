@@ -10,13 +10,12 @@ import pyqtgraph as pg
 import qdarkstyle
 import tifffile as tf
 import zarr
-from numba import cuda
 from ome_types.model.ome import OME
 from PyQt5.QtCore import *
 from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import *
 
-if cuda.is_available(): 
+if False:#cuda.is_available(): 
     from .fitting.pyfit3Dcspline.mainfunctions import GPUmleFit_LM
 else:
     def GPUmleFit_LM(*args):
@@ -1121,7 +1120,7 @@ class tiff_viewer(QMainWindow):
         if len(filename) > 0:
 
             if self.fitting_cbox.currentData() == \
-                    FittingMethod._2D_Phasor_CPU or not cuda.is_available():
+                    FittingMethod._2D_Phasor_CPU or not False:#cuda.is_available():
                 def done(res):
                     self.loc_btn.setDisabled(False)
                     if res is not None:
