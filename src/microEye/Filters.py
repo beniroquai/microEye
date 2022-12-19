@@ -137,7 +137,7 @@ class BandpassFilter(AbstractFilter):
         self._center = 40.0
         self._width = 90.0
         self._type = 'gauss'
-        self._show_filter = True
+        self._show_filter = False
         self._refresh = True
 
     def radial_cordinate(self, shape):
