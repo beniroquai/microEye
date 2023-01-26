@@ -1,0 +1,148 @@
+Name : erbb3 12 blink + cyl lens	17/11/2010	2:14:48 PM	
+
+Type : 14 bit grey/pseudo
+Intensity : 1.000000 lux
+x : 515 * 0.078431 : um
+y : 703 * 0.080000 : um
+Time : 20000
+
+
+[Created]
+Date=16/11/2010
+Time=1:17:58 PM
+[Created End]
+[Grab Parameters]
+Camera=Andor
+Window Left=381
+Window Top=207
+Window Right=514
+Window Bottom=702
+Window Width=515
+Window Height=703
+BinningX=1
+BinningY=1
+Image Width=515
+Image Height=703
+Exposure=50.000ms
+[Grab Parameters End]
+[Frame Rate]
+Average=15.59
+[Frame Rate End]
+[Tab Device Info]
+Camera=DU8285_VP 4146
+ControllerCard=CCI-23
+DriverVersion=2.87.30003.12
+CofVersion=283
+VxDVersion=4.30
+SoftwareTrigger=Supported
+BitDepth=14
+FPGA_Version=7.0
+Ocx_Version=5.1.3.0
+Ocx_Time=10:33:20 Sep 17 2010
+Ocx_File=C:\PROGRA~1\ANDORB~1\COMMON~1\KIDAND~1.OCX
+
+[Tab Device Info End]
+[Tab Exposure]
+Window=515 : 703
+Shutter=Open
+Binning=1x1
+Temperature - Actual =-89
+Display Control - Fastest=Checked
+Display Control - Display Rate=1
+Gains - Pre-Amp-Gain=1.00
+EM Gain - Enabled=Checked
+Gains - EMGain=150
+Exposure Time - Frame Transfer=Checked
+Exposure Time - unit=ms
+Exposure Time - exposure value=50.0
+Exposure Time - Actual=50.000ms
+Exposure Time - Readout in ms=63.710
+Experiment Control - FLZ=Unchecked
+Experiment Control - Trig Mode=Free Run
+Experiment Control - Ext Start=Unchecked
+Use Frame averaging=Unchecked
+Frames to be averaged=4
+Fastest Grab=Unchecked
+Available memory=2047
+[Tab Exposure End]
+[Tab Temperature/Shutter]
+Temperature Setting=-89
+Actual Temperature=-89
+Cooling=Working
+Fan=Full
+TTL High Open=Checked
+Shutter Open Transfer Time=60
+Shutter Close Transfer Time=80
+[Tab Temperature/Shutter End]
+[Tab Speed/Amplifer]
+Horizontal Readout=13.000
+Vertical Readout time=3.727
+ADC Channel=0
+Vertical Clock Voltage=+4
+Output Amplifier=EM Port
+Baseline Clamp=Checked
+[Tab Speed/Amplifer End]
+[Tab Image Orientation]
+Flip=None
+Rotation in Degrees=None
+[Tab Image Orientation End]
+[Image Info]
+Window Left=381
+Window Top=207
+Window Right=514
+Window Bottom=702
+Window Width=515
+Window Height=703
+Window BinningX=1
+Window BinningY=1
+[Image Info End]
+[Image Bits]
+14 Bit Data=TRUE
+[Image Bits End]
+[First Frame]
+SavedTime=11/16/2010 2:37:42 PM.468
+[First Frame End]
+[Experiment-End]
+Temperature - Actual =-89
+[Experiment-End End]
+[Environment]
+User=Guy
+Configuration=camera only
+[Environment End]
+[Protocol Description]
+Protocol - blink fast
+	Image - blink fast
+		Protocol Type - Fast Time
+		Camera Binning - Use Current
+		Wait Allocation - On
+		Camera Selection - Use Current
+		Pause - Click OK to start protocol
+		Interval - 55 ms (fastest)
+		Repeat - 20000 times
+			Channel - blink
+				Camera EM Gain - 150
+				Camera Binning X - CURRENT
+				Camera Binning Y - CURRENT
+				Camera Exposure Time (s) - 0.05
+				LUT - Grey
+				Map Min - 334
+				Map Max - 2771
+			Snap
+		End
+
+[Protocol Description End]
+[XYZScan]
+ScanName=
+FileVersion=2
+Centre=False
+Channel=
+WellPattern=
+Density=0
+Calibration=
+XYFields=
+ZScan=
+Montage=
+Plates=
+MontageOffsets=
+[XYZScan End]
+

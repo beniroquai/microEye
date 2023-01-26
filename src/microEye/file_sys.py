@@ -613,6 +613,7 @@ class tiff_viewer(QMainWindow):
                                 self.metadataEditor.px_size.value())
 
                     self.centerROI()
+        self.loc_btn.setDisabled(False)
 
     def save_cropped_img(self):
         if self.tiffSeq_Handler is None:
@@ -1127,6 +1128,7 @@ class tiff_viewer(QMainWindow):
                             self.fittingResults.dataFrame())
                 print('\nCPU Fit')
                 # Any other args, kwargs are passed to the run function
+                #self.localizeStackCPU(filename, progress_callback=self.renderLoc)
                 self.worker = thread_worker(
                     self.localizeStackCPU, filename,
                     progress=True, z_stage=False)
@@ -1228,7 +1230,15 @@ class tiff_viewer(QMainWindow):
         result : np.ndarray
             [description]
         '''
-        if result is not None:
+        
+        # result is either 
+        # ([3, 3, 3, 3], array([[1.0635952e+0...e=float32), None, None)
+        # or
+        # (None, None, None, None)
+        isNone = True
+        for iresult in result:
+            isNone &= iresult is None
+        if result is not None and not isNone:
             self.fittingResults.extend(result)
         self.thread_done += 1
 

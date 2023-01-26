@@ -158,26 +158,44 @@ class FittingResults:
         if self.locX is None:
             self.locX = params[:, 0]
         else:
-            self.locX = np.concatenate(
-                (self.locX, params[:, 0]))
+            try:
+                self.locX = np.concatenate(
+                    (self.locX, params[:, 0]))
+            except:
+                pass
 
         if self.locY is None:
             self.locY = params[:, 1]
         else:
-            self.locY = np.concatenate(
-                (self.locY, params[:, 1]))
-
+            try:
+                self.locY = np.concatenate(
+                    (self.locY, params[:, 1]))
+            except:
+                pass
+            
         if self.background is None:
             self.background = params[:, 2]
         else:
-            self.background = np.concatenate(
-                (self.background, params[:, 2]))
-
+            try:
+                self.background = np.concatenate(
+                    (self.background, params[:, 2]))
+            except TypeError:
+                self.background = np.hstack(
+                    (self.background, self.background[-1]))
+                print("TypeError in concat Background")
+                
+                
         if self.intensity is None:
             self.intensity = params[:, 3]
         else:
-            self.intensity = np.concatenate(
-                (self.intensity, params[:, 3]))
+            try:
+                self.intensity = np.concatenate(
+                    (self.intensity, params[:, 3]))
+            except TypeError:
+                self.intensity = np.hstack(
+                    (self.intensity, self.intensity[-1]))
+                print("TypeError in concat intensity")
+
 
         if self.frames is None:
             self.frames = frames

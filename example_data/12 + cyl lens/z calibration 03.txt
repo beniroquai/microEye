@@ -1,0 +1,245 @@
+Name : z calibration with cyl lens 170nm ps beads	16/11/2010	4:39:40 PM	
+
+Type : 14 bit grey/pseudo
+Intensity : 1.000000 lux
+x : 1004 * 0.078431 : um
+y : 1002 * 0.080000 : um
+Z : 201
+
+
+[Created]
+Date=16/11/2010
+Time=4:32:33 PM
+[Created End]
+[XYZScan]
+ScanName=
+FileVersion=2
+Centre=False
+Channel=
+WellPattern=
+Density=0
+Calibration=
+XYFields=
+ZScan=
+Montage=
+Plates=
+MontageOffsets=
+[XYZScan End]
+[Environment]
+User=Guy
+Configuration=ixon and piezo
+[Environment End]
+[Protocol Description]
+Protocol - blink
+	Image - blink
+		Protocol Type - Fast Time
+		Camera Binning - Use Current
+		Wait Allocation - On
+		Camera Selection - Use Current
+		Interval - 82.5 ms (fastest)
+		Repeat - 1 times
+			Channel - blink
+				Camera EM Gain - 0
+				Camera Binning X - CURRENT
+				Camera Binning Y - CURRENT
+				Camera Exposure Time (s) - 0.075
+				LUT - Grey
+				Map Min - 290
+				Map Max - 5317
+				LVPZT - DELTA_Z 0
+				AOTF Channel 1 Intensity - 0
+				AOTF Channel 2 Intensity - 0
+				AOTF Channel 3 Intensity - Current
+				AOTF Channel 4 Intensity - Current
+				AOTF Channel 5 Intensity - Current
+				AOTF Channel 6 Intensity - Current
+				AOTF MPD - Current
+				AOTF Position - 450
+				AOTF Shutter - Current
+			Snap
+		End
+
+[Protocol Description End]
+[Grab Parameters]
+Camera=Andor
+Window Left=0
+Window Top=0
+Window Right=1003
+Window Bottom=1001
+Window Width=1004
+Window Height=1002
+BinningX=1
+BinningY=1
+Image Width=1004
+Image Height=1002
+Exposure=75.000ms
+[Grab Parameters End]
+[Tab Device Info]
+Camera=DU8285_VP 4146
+ControllerCard=CCI-23
+DriverVersion=2.87.30003.12
+CofVersion=283
+VxDVersion=4.30
+SoftwareTrigger=Supported
+BitDepth=14
+FPGA_Version=7.0
+Ocx_Version=5.1.1.60
+Ocx_Time=14:41:32 May 24 2010
+Ocx_File=C:\PROGRA~1\ANDORB~1\COMMON~1\KIDAND~2.OCX
+
+[Tab Device Info End]
+[Tab Exposure]
+Window=1004 : 1002
+Shutter=Open
+Binning=1x1
+Temperature - Actual =-90
+Display Control - Fastest=Checked
+Display Control - Display Rate=1
+Gains - Pre-Amp-Gain=1.00
+EM Gain - Enabled=Unchecked
+Gains - EMGain=2
+Exposure Time - Frame Transfer=Unchecked
+Exposure Time - unit=ms
+Exposure Time - exposure value=75
+Exposure Time - Actual=75.000ms
+Exposure Time - Readout in ms=84.300
+Experiment Control - FLZ=Checked
+Experiment Control - Trig Mode=Ext Trigger
+Experiment Control - Ext Start=Unchecked
+Use Frame averaging=Unchecked
+Frames to be averaged=4
+Fastest Grab=Unchecked
+Available memory=2047
+[Tab Exposure End]
+[Tab Sequence]
+Number Of Lambdas=1
+Number Of Zeds=201
+Estimated Min-LZ interval=~36.984(s)
+Interval=0.000 s
+Wavelength Device=AOTF
+Bright_Field=Unchecked
+BrightFieldImagingFrequency=1
+BrightFieldExposure(ms)=50
+CopyBrightFieldToAllPlanes=Unchecked
+BrightFieldZPlane=1
+BrightFieldShutterOpen=Unchecked
+Burst Count=1
+Burst Interval(s)=0
+Laser Intensity During Burst=0, 0, 0, 0, 0, 0
+MPU Position During Burst=1
+Z Field After Burst=11
+L Control - Enabled=Unchecked
+L Control - Move 1st=Checked
+L Control - NoOfLambdas=1
+Enabled_L_1_Checked=true
+Enabled_L_2_Checked=false
+Enabled_L_3_Checked=false
+Enabled_L_4_Checked=false
+L Control - Excitation 1 =450.000 nm
+L Control - Excitation 2 =450.000 nm
+L Control - Excitation 3 =450.000 nm
+L Control - Excitation 4 =0.000 nm
+Emission_Checked=false
+L Control - Emission 1 = nm
+L Control - Emission 2 = nm
+L Control - Emission 3 = nm
+L Control - Emission 4 = nm
+Exposure_Checked=false
+L_Control_Exposure_1=50.0 ms
+L_Control_Exposure_2=40.0 ms
+L_Control_Exposure_3=30.0 ms
+L_Control_Exposure_4=20.0 ms
+Z Control - Enabled=Checked
+Z Control - Move 1st=Unchecked
+Z Control - Planes Computed=Checked
+Z Control - Step Computed=Unchecked
+Z Control - Use Nyquist Step=Unchecked
+Z Control - Nyquist Lambda=300.000
+Z Control - Nyquist N=1.510
+Z Control - Nyquist Na=1.000
+Z Control - Start=49.0
+Z Control - Step=.01
+Z Control - Planes=201
+Z Control - End=51.0
+Fast Scan=Unchecked
+[Tab Sequence End]
+[Tab Temperature/Shutter]
+Temperature Setting=-90
+Actual Temperature=-90
+Cooling=Working
+Fan=Full
+TTL High Open=Checked
+Shutter Open Transfer Time=60
+Shutter Close Transfer Time=80
+[Tab Temperature/Shutter End]
+[Tab Speed/Amplifer]
+Horizontal Readout=13.000
+Vertical Readout time=1.920
+ADC Channel=0
+Vertical Clock Voltage=+4
+Output Amplifier=EM Port
+Baseline Clamp=Checked
+[Tab Speed/Amplifer End]
+[Tab Image Orientation]
+Flip=None
+Rotation in Degrees=None
+[Tab Image Orientation End]
+[Tab Wavelength]
+WavelengthDevice=AOTF
+Shutter=Auto
+Emission Filter Wheel=None
+[Tab Wavelength End]
+[Tab Piezo]
+Min=0
+Max=100
+Step Delay=15
+End to Start=25
+Position=51.00
+[Tab Piezo End]
+[Tab Timing Output]
+Frame=Low-High-Low
+Loop=Low-High-Low
+LoopDelay=0
+LoopDuration=0
+LoopForExternalShutterControl=Unchecked
+LoopShutterDelay=0
+LoopDurationToEnd=Checked
+Loop1=Low-High-Low
+Loop1Delay=0
+Loop1Duration=0
+Loop1ForExternalShutterControl=Unchecked
+Loop1ShutterDelay=0
+Loop1DurationToEnd=Checked
+Loop2=Low-High-Low
+Loop2Delay=0
+Loop2Duration=0
+Loop2ForExternalShutterControl=Unchecked
+Loop2ShutterDelay=0
+Loop2DurationToEnd=Checked
+[Tab Timing Output End]
+[Tab Input Events]
+Ext Trig to Start - Enabled=Unchecked
+Ext Trig to Start - High/Low=High
+Input 0=Disabled, Level To: High
+Input 1=Disabled, Level To: High
+Input 2=Disabled, Level To: High
+Input 3=Disabled, Level To: High
+Input 4=Disabled, Level To: High
+Input 5=Disabled, Level To: High
+Input 6=Disabled, Level To: High
+Input 7=Disabled, Level To: High
+[Tab Input Events End]
+[Image Info]
+Window Left=0
+Window Top=0
+Window Right=1003
+Window Bottom=1001
+Window Width=1004
+Window Height=1002
+Window BinningX=1
+Window BinningY=1
+[Image Info End]
+[Image Bits]
+14 Bit Data=TRUE
+[Image Bits End]
+
