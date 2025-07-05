@@ -44,6 +44,18 @@ def get_blob_detector(
         # Filter by Inertia
         params.filterByInertia = False
         # params.minInertiaRatio = 1
+        
+    # default values? 
+    
+    params.minCircularity = 0.000001
+    params.maxArea = 80.0
+    params.minThreshold = 0.0
+    params.maxThreshold = 255.0
+    params.thresholdStep = 10.0
+    params.minDistBetweenBlobs = 10.0
+    params.minInertiaRatio = 0.000001
+    params.minConvexity = 0.000001
+
 
     # Create a detector with the parameters
     ver = (cv2.__version__).split('.')
