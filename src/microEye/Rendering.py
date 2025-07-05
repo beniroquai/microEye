@@ -4,8 +4,8 @@ from os import name
 import cv2
 import numba
 import numpy as np
-import pyqtgraph as pg
-from PyQt5.QtCore import *
+
+
 from scipy.interpolate import interp1d, UnivariateSpline
 
 

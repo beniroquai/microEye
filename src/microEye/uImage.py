@@ -3,8 +3,8 @@ from typing import Union
 import cv2
 import numpy as np
 import tifffile as tf
-import zarr
-from PyQt5.QtCore import *
+#import zarr
+#from PyQt5.QtCore import *
 
 
 class uImage():

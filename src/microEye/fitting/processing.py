@@ -1,7 +1,6 @@
 
 import numpy as np
 import numba as nb
-import pyqtgraph as pg
 from skimage.registration import phase_cross_correlation
 from sklearn.neighbors import NearestNeighbors
 

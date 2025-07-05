@@ -1,7 +1,7 @@
 
 import numpy as np
 import pandas as pd
-from PyQt5.QtCore import *
+
 from scipy.interpolate import interp1d
 
 from ..Rendering import gauss_hist_render

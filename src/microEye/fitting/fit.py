@@ -144,75 +144,9 @@ class CV_BlobDetector(AbstractDetector):
 
         return cv2.KeyPoint_convert(keypoints), im_with_keypoints
 
-
-class BlobDetectionWidget(QGroupBox):
-    update = pyqtSignal()
-
-    def __init__(self) -> None:
-        super().__init__()
-
-        self.detector = CV_BlobDetector()
-
-        self._layout = QFormLayout()
-        self.setTitle('OpenCV Blob Approx. Localization')
-        self.setLayout(self._layout)
-
-        self.minArea = QDoubleSpinBox()
-        self.minArea.setMinimum(0)
-        self.minArea.setMaximum(1024)
-        self.minArea.setSingleStep(0.05)
-        self.minArea.setValue(1.5)
-        self.minArea.valueChanged.connect(self.value_changed)
-
-        self.maxArea = QDoubleSpinBox()
-        self.maxArea.setMinimum(0)
-        self.maxArea.setMaximum(1024)
-        self.maxArea.setSingleStep(0.05)
-        self.maxArea.setValue(80.0)
-        self.maxArea.valueChanged.connect(self.value_changed)
-
-        self.minCircularity = QDoubleSpinBox()
-        self.minCircularity.setMinimum(0)
-        self.minCircularity.setMaximum(1)
-        self.minCircularity.setSingleStep(0.05)
-        self.minCircularity.setValue(0)
-        self.minCircularity.valueChanged.connect(self.value_changed)
-
-        self.minConvexity = QDoubleSpinBox()
-        self.minConvexity.setMinimum(0)
-        self.minConvexity.setMaximum(1)
-        self.minConvexity.setSingleStep(0.05)
-        self.minConvexity.setValue(0)
-        self.minConvexity.valueChanged.connect(self.value_changed)
-
-        self.minInertiaRatio = QDoubleSpinBox()
-        self.minInertiaRatio.setMinimum(0)
-        self.minInertiaRatio.setMaximum(1)
-        self.minInertiaRatio.setSingleStep(0.05)
-        self.minInertiaRatio.setValue(0)
-        self.minInertiaRatio.valueChanged.connect(self.value_changed)
-
-        self._layout.addRow(
-            QLabel('Min area:'),
-            self.minArea)
-        self._layout.addRow(
-            QLabel('Max area:'),
-            self.maxArea)
-        # self.controls_layout.addWidget(self.minCircularity)
-        # self.controls_layout.addWidget(self.minConvexity)
-        # self.controls_layout.addWidget(self.minInertiaRatio)
-
-    def value_changed(self, value):
-        self.detector.set_blob_detector_params(
-            minArea=self.minArea.value(),
-            maxArea=self.maxArea.value()
-        )
-        self.update.emit()
-
-
 def pre_localize_frame(
         index,
-        tiffSeq_Handler: Union[TiffSeqHandler, ZarrImageSequence],
+        tiffSeq_Handler: Union[TiffSeqHandler],
         image: np.ndarray, varim: np.ndarray,
         temp: TemporalMedianFilter,
         filter: AbstractFilter,

@@ -3,13 +3,10 @@ import math
 import cv2
 import dask.array
 import numpy as np
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QWidget
 from scipy import signal
 from scipy.fftpack import fft2, fftshift, ifft2, ifftshift
 
-from .uImage import ZarrImageSequence
+#from .uImage import ZarrImageSequence
 
 
 class AbstractFilter:
@@ -18,7 +15,7 @@ class AbstractFilter:
         return image
 
     def getWidget(self):
-        return QWidget()
+        return None 
 
 
 class DoG_Filter(AbstractFilter):
@@ -55,57 +52,6 @@ class DoG_Filter(AbstractFilter):
             signal.convolve2d(image, np.rot90(self.dog), mode='same'),
             None, 0, 255, cv2.NORM_MINMAX, cv2.CV_8U)
 
-
-class DoG_FilterWidget(QGroupBox):
-    update = pyqtSignal()
-
-    def __init__(self) -> None:
-        super().__init__()
-
-        self.setTitle('DoG Filter')
-
-        self.filter = DoG_Filter()
-
-        self._layout = QFormLayout()
-
-        self.arg_1 = QDoubleSpinBox()
-        self.arg_1.setMinimum(0)
-        self.arg_1.setMaximum(1000)
-        self.arg_1.setSingleStep(0.1)
-        self.arg_1.setValue(1.0)
-        self.arg_1.valueChanged.connect(self.value_changed)
-
-        self.arg_2 = QDoubleSpinBox()
-        self.arg_2.setMinimum(1)
-        self.arg_2.setMaximum(100)
-        self.arg_2.setSingleStep(0.1)
-        self.arg_2.setValue(2.5)
-        self.arg_2.valueChanged.connect(self.value_changed)
-
-        self.arg_3 = QCheckBox('Show Filter')
-        self.arg_3.setChecked(True)
-        self.arg_3.stateChanged.connect(self.value_changed)
-
-        self.arg_1.valueChanged.emit(1.0)
-        self.arg_2.valueChanged.emit(2.5)
-
-        self._layout.addRow(
-            QLabel('\u03C3 min:'),
-            self.arg_1)
-        self._layout.addRow(
-            QLabel('Factor (\u03C3 max/\u03C3 min):'),
-            self.arg_2)
-        self._layout.addWidget(self.arg_3)
-
-        self.setLayout(self._layout)
-
-    def value_changed(self, value):
-        self.filter.setParams(
-            self.arg_1.value(), self.arg_2.value()
-        )
-        self.filter._show_filter = self.arg_3.isChecked()
-
-        self.update.emit()
 
 
 class GaussFilter(AbstractFilter):
@@ -316,69 +262,6 @@ class BandpassFilter(AbstractFilter):
         return img[:rows, :cols]
 
 
-class BandpassFilterWidget(QGroupBox):
-    update = pyqtSignal()
-
-    def __init__(self) -> None:
-        super().__init__()
-
-        self.setTitle('Bandpass Filter')
-
-        self.filter = BandpassFilter()
-
-        self._layout = QFormLayout()
-
-        self.arg_1 = QComboBox()
-        self.arg_1.addItems(['gauss', 'butter', 'ideal'])
-        self.arg_1.setCurrentText('gauss')
-        self.arg_1.currentTextChanged.connect(self.value_changed)
-        self.arg_1.currentTextChanged.emit('gauss')
-
-        self.arg_2 = QDoubleSpinBox()
-        self.arg_2.setMinimum(0)
-        self.arg_2.setMaximum(2096)
-        self.arg_2.setSingleStep(2)
-        self.arg_2.setValue(40.0)
-        self.arg_2.valueChanged.connect(self.value_changed)
-        self.arg_2.valueChanged.emit(40.0)
-
-        self.arg_3 = QDoubleSpinBox()
-        self.arg_3.setMinimum(0)
-        self.arg_3.setMaximum(2096)
-        self.arg_3.setSingleStep(2)
-        self.arg_3.setValue(90.0)
-        self.arg_3.valueChanged.connect(self.value_changed)
-        self.arg_3.valueChanged.emit(90.0)
-
-        self.arg_4 = QCheckBox('Show Filter')
-        self.arg_4.setChecked(True)
-        self.arg_4.stateChanged.connect(self.value_changed)
-
-        self._layout.addRow(
-            QLabel('Filter type:'),
-            self.arg_1)
-        self._layout.addRow(
-            QLabel('Center:'),
-            self.arg_2)
-        self._layout.addRow(
-            QLabel('Width:'),
-            self.arg_3)
-        self._layout.addWidget(self.arg_4)
-
-        self.setLayout(self._layout)
-
-    def value_changed(self, value):
-        if self.sender() is self.arg_1:
-            self.filter._type = self.arg_1.currentText()
-        elif self.sender() is self.arg_2:
-            self.filter._center = value
-        elif self.sender() is self.arg_3:
-            self.filter._width = value
-        elif self.sender() is self.arg_4:
-            self.filter._show_filter = self.arg_4.isChecked()
-
-        self.update.emit()
-
 
 class TemporalMedianFilter(AbstractFilter):
 
@@ -389,7 +272,7 @@ class TemporalMedianFilter(AbstractFilter):
         self._frames = None
         self._median = None
 
-    def getFrames(self, index, dataHandler: ZarrImageSequence):
+    def getFrames(self, index, dataHandler):
         if self._temporal_window < 2:
             self._frames = None
             self._median = None
@@ -444,39 +327,3 @@ class TemporalMedianFilter(AbstractFilter):
             return image
 
 
-class TemporalMedianFilterWidget(QGroupBox):
-    update = pyqtSignal()
-
-    def __init__(self) -> None:
-        super().__init__()
-
-        self.setTitle('Temporal Median Filter')
-
-        self.filter = TemporalMedianFilter()
-
-        self._layout = QFormLayout()
-
-        self.window_size = QSpinBox()
-        self.window_size.setMinimum(1)
-        self.window_size.setMaximum(2096)
-        self.window_size.setSingleStep(1)
-        self.window_size.setValue(3)
-        self.window_size.valueChanged.connect(self.value_changed)
-        self.window_size.valueChanged.emit(3)
-
-        self.enabled = QCheckBox('Enable Filter')
-        self.enabled.setChecked(False)
-        self.enabled.stateChanged.connect(self.value_changed)
-
-        self._layout.addRow(
-            QLabel('Temporal Window Size:'),
-            self.window_size)
-        self._layout.addWidget(self.enabled)
-
-        self.setLayout(self._layout)
-
-    def value_changed(self, value):
-        if self.sender() is self.window_size:
-            self.filter._temporal_window = value
-
-        self.update.emit()
